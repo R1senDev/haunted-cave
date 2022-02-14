@@ -9,11 +9,11 @@ const line3 = document.getElementById('line3');
 const line4 = document.getElementById('line4');
 const line5 = document.getElementById('line5');
 
-const slot1 = document.getElementById('slot1');
-const slot2 = document.getElementById('slot2');
-const slot3 = document.getElementById('slot3');
-const slot4 = document.getElementById('slot4');
-const slot5 = document.getElementById('slot5');
+const slotLine1 = document.getElementById('slot1');
+const slotLine2 = document.getElementById('slot2');
+const slotLine3 = document.getElementById('slot3');
+const slotLine4 = document.getElementById('slot4');
+const slotLine5 = document.getElementById('slot5');
 
 const use1 = document.getElementById('use1');
 const drop1 = document.getElementById('drop1');
@@ -51,6 +51,8 @@ const next2 = document.getElementById('next2');
 const cook = document.getElementById('cook');
 
 let player = {
+	hp: 100,
+	energy: 200,
 	level: 1,
 	skillPoints: 0,
 	skill: {
@@ -63,7 +65,49 @@ let player = {
 	location: 'cave',
 	goingDown: true,
 	depth: 0,
+	parameters: {
+		attack: 5,
+		maxEnergy: 200,
+		regenEnergy: 1, // per second
+		maxHealth: 100,
+		regenHealth: 1, // per second
+		update: function() {
+			player.parameters.attack = player.skill.strength * 2 + 5;
+			player.parameters.maxEnergy = player.skill.agility * 20 + 200;
+			player.parameters.maxHealth = player.skill.resistanse * 10 + 100;
+			player.parameters.regenHealth = player.skill.vitality + 1;
+		},
+		updateInterval: setInterval(player.parameters.update, 1000);
+	},
 };
+
+let enemy = {
+
+};
+
+function Item(name) {
+	switch (name) {
+		case 'soup':
+			this.effects.saturation = 40;
+			this.effects.regen = 10;
+	}
+}
+
+function Item(name, effects, usable, onUseMsg, throwable, onThrowMsg) {
+
+}
+
+function addLine(str) {
+	line1.value = line2.value;
+	line2.value = line3.value;
+	line3.value = line4.value;
+	line4.value = line5.value;
+	line5.value = str;
+}
+
+function addToInventory(item_) {
+
+}
 
 function updateScreen() {
 	if (player.goingDown) {
@@ -71,6 +115,10 @@ function updateScreen() {
 	} else {
 		timeBar.value = `Going up.. (${player.depth}m)`;
 	}
+	healthBar.value = `Health: ${player.hp}/${player.parameters.maxHealth}`;
+	energyBar.value = `Energy: ${player.energy}/${player.parameters.maxEnergy}`;
+	saturationBar.value = `Saturation: ${player.saturation}%`;
+
 }
 
 function onload() {
@@ -79,4 +127,4 @@ function onload() {
 
 addEventListener('DOMContentLoaded', onload);
 setInterval(function() {if (player.goingDown) {player.depth++} else {player.depth--}}, 750);
-setInterval(updateScreen, 5);
+setInterval(updateScreen, 10);
