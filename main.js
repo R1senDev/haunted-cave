@@ -79,4 +79,4 @@ function onload() {
 
 addEventListener('DOMContentLoaded', onload);
 setInterval(function() {if (player.goingDown) {player.depth++} else {player.depth--}}, 750);
-setInterval(updateScreen, 10);
+setInterval(updateScreen, 1);
