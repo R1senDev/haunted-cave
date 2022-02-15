@@ -56,10 +56,18 @@ let player = {
 	level: 1,
 	skillPoints: 0,
 	skill: {
-
+		strength: 0,
+		agility: 0,
+		luck: 0,
+		resistance: 0,
+		vitality: 0,
 	},
 	inventory: {
-
+		slot1: null,
+		slot2: null,
+		slot3: null,
+		slot4: null,
+		slot5: null,
 	},
 	saturation: 100,
 	location: 'cave',
@@ -76,6 +84,12 @@ let player = {
 			player.parameters.maxEnergy = player.skill.agility * 20 + 200;
 			player.parameters.maxHealth = player.skill.resistanse * 10 + 100;
 			player.parameters.regenHealth = player.skill.vitality + 1;
+			if (player.hp < player.parameters.maxHealth) {
+				player.hp += player.parameters.regenHealth;
+			}
+			if (player.energy < player.parameters.maxEnergy) {
+				player.energy += player.parameters.regenEnergy;
+			}
 		},
 		updateInterval: setInterval(player.parameters.update, 1000);
 	},
@@ -90,11 +104,40 @@ function Item(name) {
 		case 'soup':
 			this.effects.saturation = 40;
 			this.effects.regen = 10;
+			break;
+		case 'smallMedicine':
+			this.effects.regen = 10;
+			this.effects.restoring = 5;
+			break;
+		case 'medicine':
+			this.effects.regen = 25;
+			this.effects.restoring: 15;
+			break;
+		case 'bigMedicine':
+			this.effects.regen = 50;
+			this.effects.restoring: 35;
+			break;
+		case 'strangePotion':
+			this.effects.regen = Math.floor(Math.random() * 40);
+			this.effects.restoring = Math.floor(Math.random() * 30);
+			break;
 	}
 }
 
-function Item(name, effects, usable, onUseMsg, throwable, onThrowMsg) {
-
+function Item(name, effects, usable, onUseMsg, onDropMsg, throwable, onThrowMsg, special) {
+	this.name = name;
+	this.effects = effects; // like {saturation: 10, regen: 10}
+	this.effects.forciblyTreats = false; // after the treatment of the character, he may have more health than the maximum health
+	this.usable = usable;
+	this.onUseMsg = onUseMsg;
+	this.onDropMsg = onDropMsg;
+	this.throwable = throwable;
+	this.onThrowMsg = onThrowMsg;
+	if (!special.includes('undroppable')) {
+		Object.defineProperty(this, droppable, {value: true, writable: false});
+	} else {
+		this.droppable = false;
+	}
 }
 
 function addLine(str) {
@@ -106,7 +149,7 @@ function addLine(str) {
 }
 
 function addToInventory(item_) {
-
+	if (inventory)
 }
 
 function updateScreen() {
