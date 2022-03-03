@@ -1,78 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>Haunted Cave</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<div class="block1">
-		<div class="status">
-			<input type="text" id="timeBar" class="dis" disabled>
-			<input type="text" id="healthBar" class="dis" disabled>
-			<input type="text" id="energyBar" class="dis" disabled>
-			<input type="text" id="saturationBar" class="dis" disabled>
-		</div>
-	</div>
-	<div class="block2">
-		<div class="lines">
-			<input type="text" id="line1" class="dis" disabled><br>
-			<input type="text" id="line2" class="dis" disabled><br>
-			<input type="text" id="line3" class="dis" disabled><br>
-			<input type="text" id="line4" class="dis" disabled><br>
-			<input type="text" id="line5" class="dis" disabled><br>
-		</div>
-		<div class="inventory">
-			<input type="text" id="slot1" class="dis" disabled>
-			<button class="use" id="use1" onclick="button('use', 1)">Use</button>
-			<button class="drop" id="drop1" onclick="button('drop', 1)">Drop</button>
-			<button class="throw" id="throw1" onclick="button('throw', 1)">Throw to...</button><br>
-			<input type="text" id="slot2" class="dis" disabled>
-			<button class="use" id="use2" onclick="button('use', 2)">Use</button>
-			<button class="drop" id="drop2" onclick="button('drop', 2)">Drop</button>
-			<button class="throw" id="throw2" onclick="button('throw', 2)">Throw to...</button><br>
-			<input type="text" id="slot3" class="dis" disabled>
-			<button class="use" id="use3" onclick="button('use', 3)">Use</button>
-			<button class="drop" id="drop3" onclick="button('drop', 3)">Drop</button>
-			<button class="throw" id="throw3" onclick="button('throw', 3)">Throw to...</button><br>
-			<input type="text" id="slot4" class="dis" disabled>
-			<button class="use" id="use4" onclick="button('use', 4)">Use</button>
-			<button class="drop" id="drop4" onclick="button('drop', 4)">Drop</button>
-			<button class="throw" id="throw4" onclick="button('throw', 4)">Throw to...</button><br>
-			<input type="text" id="slot5" class="dis" disabled>	
-			<button class="use" id="use5" onclick="button('use', 5)">Use</button>
-			<button class="drop" id="drop5" onclick="button('drop', 5)">Drop</button>
-			<button class="throw" id="throw5" onclick="button('throw', 5)">Throw to...</button><br>
-		</div>
-	</div>
-	<div class="block3">
-		<div class="stats">
-			<h2 class="stats-h">Stats</h2>
-			<input type="text" id="level" class="dis" disabled><br>
-			<input type="text" id="skillPoints" class="dis" disabled><br>
-			<input type="text" id="agility" class="dis" disabled>
-			<button class="plus" onclick="upgrade('agility')" id="plusa">+</button><br>
-			<input type="text" id="luck" class="dis" disabled>
-			<button class="plus" onclick="upgrade('luck')" id="plusl">+</button><br>
-			<input type="text" id="resistance" class="dis" disabled>
-			<button class="plus" onclick="upgrade('resistance')" id="plusr">+</button><br>
-			<input type="text" id="strength" class="dis" disabled>
-			<button class="plus" onclick="upgrade('strength')" id="pluss">+</button><br>
-			<input type="text" id="vitality" class="dis" disabled>
-			<button class="plus" onclick="upgrade('vitality')" id="plusv">+</button><br>
-		</div>
-		<div class="cooking">
-			<h2 class="cooking-h">Cooking</h2>
-			<button id="prev1" class="cooking-b" onclick="button('prev', 1)"><</button>
-			<input type="text" id="cook1" class="dis" disabled>
-			<button id="next1" class="cooking-b" onclick="button('next', 1)">></button><br>
-			<button id="prev2" class="cooking-b" onclick="button('prev', 2)"><</button>
-			<input type="text" id="cook2" class="dis" disabled>
-			<button id="next2" class="cooking-b" onclick="button('next', 2)">></button><br>
-			<button id="cook" onclick="button('cook', 0)">Cook</button>
-		</div>
-	</div>
 
-	<script type="text/javascript" src="main.js"></script>
+<head>
+    <meta charset="utf-8">
+    <title>Haunted Cave</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <section class="ui-container">
+        <div class="block1">
+            <div class="status">
+                <input type="text" id="timeBar" class="dis" disabled>
+                <input type="text" id="healthBar" class="dis" disabled>
+                <input type="text" id="energyBar" class="dis" disabled>
+                <input type="text" id="saturationBar" class="dis" disabled>
+            </div>
+            <div class="lines">
+                <input type="text" id="line1" class="dis" disabled><br>
+                <input type="text" id="line2" class="dis" disabled><br>
+                <input type="text" id="line3" class="dis" disabled><br>
+                <input type="text" id="line4" class="dis" disabled><br>
+                <input type="text" id="line5" class="dis" disabled><br>
+            </div>
+        </div>
+        <div class="block2">
+            <div class="inventory">
+                <input type="text" id="slot1" class="dis" disabled>
+                <button class="use" id="use1" onclick="button('use', 1)">Use</button>
+                <button class="drop" id="drop1" onclick="button('drop', 1)">Drop</button>
+                <button class="throw" id="throw1" onclick="button('throw', 1)">Throw to...</button><br>
+                <input type="text" id="slot2" class="dis" disabled>
+                <button class="use" id="use2" onclick="button('use', 2)">Use</button>
+                <button class="drop" id="drop2" onclick="button('drop', 2)">Drop</button>
+                <button class="throw" id="throw2" onclick="button('throw', 2)">Throw to...</button><br>
+                <input type="text" id="slot3" class="dis" disabled>
+                <button class="use" id="use3" onclick="button('use', 3)">Use</button>
+                <button class="drop" id="drop3" onclick="button('drop', 3)">Drop</button>
+                <button class="throw" id="throw3" onclick="button('throw', 3)">Throw to...</button><br>
+                <input type="text" id="slot4" class="dis" disabled>
+                <button class="use" id="use4" onclick="button('use', 4)">Use</button>
+                <button class="drop" id="drop4" onclick="button('drop', 4)">Drop</button>
+                <button class="throw" id="throw4" onclick="button('throw', 4)">Throw to...</button><br>
+                <input type="text" id="slot5" class="dis" disabled>
+                <button class="use" id="use5" onclick="button('use', 5)">Use</button>
+                <button class="drop" id="drop5" onclick="button('drop', 5)">Drop</button>
+                <button class="throw" id="throw5" onclick="button('throw', 5)">Throw to...</button><br>
+            </div>
+            <div class="cooking">
+                <h2 class="cooking-h">Cooking</h2>
+                <button id="prev1" class="cooking-b" onclick="button('prev', 1)"><</button>
+                <input type="text" id="cook1" class="dis" disabled>
+                <button id="next1" class="cooking-b" onclick="button('next', 1)">></button><br>
+                <button id="prev2" class="cooking-b" onclick="button('prev', 2)"><</button>
+                <input type="text" id="cook2" class="dis" disabled>
+                <button id="next2" class="cooking-b" onclick="button('next', 2)">></button><br>
+                <button id="cook" onclick="button('cook', 0)">Cook</button>
+            </div>
+        </div>
+        <div class="block3">
+            <div class="stats">
+                <h2 class="stats-h">Stats</h2>
+                <input type="text" id="level" class="dis" disabled><br>
+                <input type="text" id="skillPoints" class="dis" disabled><br>
+                <input type="text" id="agility" class="dis" disabled>
+                <button class="plus" onclick="upgrade('agility')" id="plusa">+</button><br>
+                <input type="text" id="luck" class="dis" disabled>
+                <button class="plus" onclick="upgrade('luck')" id="plusl">+</button><br>
+                <input type="text" id="resistance" class="dis" disabled>
+                <button class="plus" onclick="upgrade('resistance')" id="plusr">+</button><br>
+                <input type="text" id="strength" class="dis" disabled>
+                <button class="plus" onclick="upgrade('strength')" id="pluss">+</button><br>
+                <input type="text" id="vitality" class="dis" disabled>
+                <button class="plus" onclick="upgrade('vitality')" id="plusv">+</button><br>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="main.js"></script>
 </body>
+
 </html>
